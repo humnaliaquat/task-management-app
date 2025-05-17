@@ -9,9 +9,7 @@ import {
   LogOut,
 } from "lucide-react";
 
-const Sidebar = () => {
-  const [collapsed, setCollapsed] = useState(false);
-
+const Sidebar = ({ collapsed, setCollapsed }) => {
   // Main nav items (top)
   const navItems = [
     { icon: <List size={20} />, label: "All Tasks" },
@@ -27,8 +25,8 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`fixed top-0 left-0 h-screen border-none bg-[#2F2F2F] flex flex-col justify-between py-6   ${
-        collapsed ? "w-[72px]" : "w-[220px]"
+      className={`fixed top-0 left-0 h-screen border-none bg-[#1C6E8C] flex flex-col justify-between py-6   ${
+        collapsed ? "w-[72px]" : "w-[255px]"
       }`}
     >
       {/* TOP PART */}
@@ -40,9 +38,7 @@ const Sidebar = () => {
           } w-full px-2`}
         >
           {!collapsed && (
-            <span className=" text-[#FCFCFC]  font-sans font-bold bottom text-lg">
-              Taskly
-            </span>
+            <span className=" text-[#ffffff]     bottom text-lg">Taskly</span>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
@@ -52,7 +48,7 @@ const Sidebar = () => {
             {collapsed ? <ChevronRight size={24} /> : <ChevronLeft size={24} />}
           </button>
         </div>
-
+        <br className="border-b-amber-200" />
         {/* NAV ITEMS */}
         <nav className="flex flex-col gap-4 mt-6 w-full">
           {navItems.map(({ icon, label }, i) => (
@@ -70,7 +66,7 @@ const Sidebar = () => {
       {/* BOTTOM PART */}
       <div className="flex flex-col gap-4 w-full justify-start ">
         {bottomItems.map(({ icon, label }, i) => (
-          <button className="flex flex-row gap-2 bg-amber-100 bottom text-[#FCFCFC]">
+          <button className="flex flex-row gap-2 bottom text-[#FCFCFC]">
             <span className="flex justify-center w-8">{icon}</span>
             {!collapsed && <span className="text-base">{label}</span>}
           </button>

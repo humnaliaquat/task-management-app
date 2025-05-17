@@ -3,7 +3,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  background: #FCFCFC;
+  
   text-align: center;
 }
 .bottom{
@@ -12,8 +12,27 @@
 }
 .bottom:focus{
  
-  background-color: aquamarine;
+  background-color: #3c97b8;
 }
 .bottom:focus-visible{
   border: none;
+  outline: none;
+}
+.btn{
+  background-color: #1C6E8C;
+}
+.btn:hover{
+  background-color: #3c97b8;
+}
+.welcome{
+  font-size: 1.6rem;
+  color: #1a1717;
+  font-weight: 700;
+  
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Quicksand', sans-serif;
+  
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
 }
