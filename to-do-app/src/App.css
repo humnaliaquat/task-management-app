@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  background: #FCFCFC;
+  text-align: center;
+}
+.bottom{
+  background: transparent;
+  border: none;
+}
+.bottom:focus{
+ 
+  background-color: aquamarine;
+}
+.bottom:focus-visible{
+  border: none;
+}
