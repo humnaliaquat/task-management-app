@@ -25,14 +25,31 @@
   background-color: #3c97b8;
 }
 .welcome{
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #1a1717;
   font-weight: 700;
   
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-family: 'Quicksand', sans-serif;
   
-  -webkit-font-smoothing: antialiased;
-  text-align: center;
+}
+.icon{
+  
+  font: 900 1.6rem 'Baloo 2', cursive;
+
+}
+.dropdownmenu{
+  position: absolute;
+  top: 4.5rem;
+  right: 30.7rem;
+
+  
+  width: 310px;
+  height: 153px;
+  border-radius: 10px;
+}
+
+
+li:hover{
+   background-color: #e7e7e7;
 }

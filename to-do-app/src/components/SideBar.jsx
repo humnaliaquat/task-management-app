@@ -38,7 +38,9 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           } w-full px-2`}
         >
           {!collapsed && (
-            <span className=" text-[#ffffff]     bottom text-lg">Taskly</span>
+            <span className=" text-[#ffffff]   icon  bottom text-2xl font-bold">
+              todo
+            </span>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
