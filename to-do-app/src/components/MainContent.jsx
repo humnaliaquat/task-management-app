@@ -1,7 +1,7 @@
-import { Key } from "lucide-react";
+import { SlidersHorizontal, Plus } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 
-export default function MainContent() {
+export default function MainContent({ collapsed }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -29,26 +29,36 @@ export default function MainContent() {
   }, []);
 
   return (
-    <div className="main-content flex-1 p-2 fixed top-22 left-68 right-4  bg-amber-200 rounded-4xl">
+    <div
+      className={`main-content flex-1  fixed top-19 right-4  border p-2 ${
+        collapsed
+          ? "left-18 w-[calc(100%-72px)]"
+          : "left-64 w-[calc(100%-256px)]"
+      }`}
+    >
       {/* Header Row */}
-      <div className="header flex justify-between flex-row items-center ">
+      <div className="header flex justify-between items-center px-3 py-1 border border-gray-300 rounded-lg  bg-white ">
         {/* Left: Date */}
-        <div className="flex flex-col justify-start items-start pl-3">
-          <h1 className="text-black text-xl font-semibold">{month}</h1>
-          <h2 className="text-black text-sm">
-            Today is {day}, {month} {date}, {year}
-          </h2>
+        <div className="flex flex-col justify-start items-start ">
+          {/* Short text for small screens */}
+          <button className="flex items-center  btn1 border border-gray-300 rounded-lg  text-black px-2 py-2">
+            <span className="text-[12px] sm:text-sm md:text-sm">Today</span>
+          </button>
         </div>
-        <p className="text-gray-400  text-3xl"> | </p>
+
+        <p className="text-gray-300  text-2xl pb-2"> | </p>
         {/* Center: View Mode Buttons */}
         <div className="relative " ref={dropdownRef}>
-          <button className="text-black" onClick={() => setIsOpen(!isOpen)}>
-            View Mode ▾
+          <button
+            className="flex items-center text-black btn1 text-sm px-2 py-1 rounded  transition sm:text-sm md:text-sm"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            <span className="text-[12px] sm:text-sm md:text-sm">View▾</span>
           </button>
 
           {isOpen && (
-            <div className="absolute mt-2 z-10 bg-white rounded-xl shadow-lg">
-              <ul className="text-black flex flex-col items-start w-40">
+            <div className="absolute mt-2 z-10 bg-white rounded-xl ">
+              <ul className="text-black flex flex-col items-start w-45 shadow-sm">
                 <li className="w-full px-4 py-2 text-left hover:bg-blue-100 cursor-pointer rounded-2xl">
                   Board view
                 </li>
@@ -64,11 +74,20 @@ export default function MainContent() {
         </div>
 
         {/* Right: Filter + Add */}
-        <p className="text-gray-400 text-3xl"> | </p>
+        <p className="text-gray-300  text-2xl pb-2"> | </p>
 
-        <div className="flex gap-3 pr-0 mr-0">
-          <button className="text-black">Filters</button>
-          <button className="text-black">Add task</button>
+        <div className="flex gap-3 p-0 ">
+          {/* Filter Button */}
+          <button className="flex items-center gap-2 btn1 text-black px-2 py-0.5  transition-all">
+            <SlidersHorizontal className="w-4 h-3 sm:w-4 sm:h-4 md:w-4 md:h-4 text-black" />
+            <span className="text-[12px] sm:text-sm md:text-sm">Filter</span>
+          </button>
+
+          {/* Add Task Button */}
+          <button className="flex items-center gap-2 btn1 px-3 py-1 whitespace-nowrap text-black">
+            <Plus className="w-3 h-3 sm:w-3 sm:h-3 md:w-4 md:h-4 text-black" />
+            <span className="text-[12px] sm:text-sm md:text-sm">Add Task</span>
+          </button>
         </div>
       </div>
 

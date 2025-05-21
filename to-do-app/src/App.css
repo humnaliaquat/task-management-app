@@ -19,13 +19,22 @@
   outline: none;
 }
 .btn{
-  background-color: #1C6E8C;
+  border-radius: 30px;
+  height: 33px;
+}
+.btn1{
+  border-radius: 10px;
+  height: 29px;
+  border: 1px solid rgb(202, 200, 200);
 }
 .btn:hover{
-  background-color: #3c97b8;
+  background-color: #ececec;
+}
+.btn1:hover{
+  background-color: #ececec;
 }
 .welcome{
-  font-size: 2rem;
+  
   color: #1a1717;
   font-weight: 700;
   

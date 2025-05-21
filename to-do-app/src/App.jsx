@@ -24,7 +24,7 @@ function App() {
     <div>
       <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
       <Navbar collapsed={collapsed} />
-      <MainContent />
+      <MainContent collapsed={collapsed} />
     </div>
   );
 }
