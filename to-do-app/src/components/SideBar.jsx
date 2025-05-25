@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,16 +14,16 @@ import {
 const Sidebar = ({ collapsed, setCollapsed }) => {
   // Main nav items (top)
   const navItems = [
-    { icon: <LayoutDashboard size={20} />, label: "Dashboard" },
-    { icon: <List size={20} />, label: "Tasks" },
-    { icon: <Calendar size={20} />, label: "Calendar" },
-    { icon: <Folder size={20} />, label: "Projects" },
+    { icon: <LayoutDashboard size={20} />, label: "Dashboard", path: "/" },
+    { icon: <List size={20} />, label: "Tasks", path: "/tasks" },
+    { icon: <Calendar size={20} />, label: "Calendar", path: "/calendar" },
+    { icon: <Folder size={20} />, label: "Projects", path: "/projects" },
   ];
 
   // Bottom nav items
   const bottomItems = [
-    { icon: <Settings size={20} />, label: "Settings" },
-    { icon: <LogOut size={20} />, label: "Logout" },
+    { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
+    { icon: <LogOut size={20} />, label: "Logout", path: "/logout" },
   ];
 
   return (
@@ -54,26 +55,39 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         </div>
 
         {/* NAV ITEMS */}
-        <nav className="flex flex-col gap-4 mt-2 w-full ">
-          {navItems.map(({ icon, label }, i) => (
-            <button
+        <nav className="flex flex-col gap-4 mt-2 w-full">
+          {navItems.map(({ icon, label, path }, i) => (
+            <Link
+              to={path}
               key={i}
-              className="flex items-center gap-2 text-[#1f2937]  bottom  w-full justify-start mb-1"
+              className="flex items-center gap-2 link text-[#1f2937]  w-full px-2 py-2 hover:bg-[#ececec]  transition rounded"
             >
-              <span className="flex justify-center w-8">{icon}</span>
-              {!collapsed && <span className="text-base">{label}</span>}
-            </button>
+              <span className="flex justify-center w-8 text-gray-800">
+                {icon}
+              </span>
+              {!collapsed && (
+                <span className="text-base text-gray-800">{label}</span>
+              )}
+            </Link>
           ))}
         </nav>
       </div>
 
       {/* BOTTOM PART */}
       <div className="flex flex-col gap-4 w-full justify-start ">
-        {bottomItems.map(({ icon, label }, i) => (
-          <button className="flex flex-row gap-2 bottom text-[#1f2937]">
-            <span className="flex justify-center w-8">{icon}</span>
-            {!collapsed && <span className="text-base">{label}</span>}
-          </button>
+        {bottomItems.map(({ icon, label, path }, i) => (
+          <Link
+            to={path}
+            key={i}
+            className="flex flex-row gap-2 bottom link hover:bg-[#ececec] text-gray-800"
+          >
+            <span className="flex justify-center text-gray-700 w-8">
+              {icon}
+            </span>
+            {!collapsed && (
+              <span className="text-base text-gray-800">{label}</span>
+            )}
+          </Link>
         ))}
       </div>
     </aside>

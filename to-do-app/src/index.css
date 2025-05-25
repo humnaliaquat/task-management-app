@@ -1,3 +1,28 @@
+/* index.css */
+.theme-light {
+  --bg: #ffffff;
+  --text: #1f2937;
+  --card: #f9fafb;
+}
+
+.theme-dark {
+  --bg: #1f2937;
+  --text: #f9fafb;
+  --card: #111827;
+}
+
+.theme-blue {
+  --bg: #e0f2fe;
+  --text: #0369a1;
+  --card: #bae6fd;
+}
+
+.theme-retro {
+  --bg: #fef3c7;
+  --text: #78350f;
+  --card: #fde68a;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

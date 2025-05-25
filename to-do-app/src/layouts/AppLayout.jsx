@@ -1,23 +1,17 @@
-import MainContent from "../components/MainContent";
-import Navbar from "../components/Navbar";
-import SideBar from "../components/SideBar";
-import Buttons from "../components/Buttons";
 import { useState, useEffect } from "react";
-import ToDoList from "../components/ToDoList";
-import Content from "../components/Content";
+import { Outlet } from "react-router-dom";
+import SideBar from "../components/SideBar";
+import Navbar from "../components/Navbar";
 
-function App() {
+export default function AppLayout() {
   const [collapsed, setCollapsed] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setCollapsed(true); // Collapse sidebar on small screens
-      } else {
-        setCollapsed(false); // Expand on larger screens
-      }
+      setCollapsed(window.innerWidth < 768);
     };
 
-    handleResize(); // Call once on mount
+    handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -26,12 +20,13 @@ function App() {
     <div>
       <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
       <Navbar collapsed={collapsed} />
-      <MainContent collapsed={collapsed}>
-        <Buttons collapsed={collapsed} />
-        <Content collapsed={collapsed} />
-      </MainContent>
+      <div
+        className={`transition-all duration-300 ${
+          collapsed ? "ml-[72px]" : "ml-[256px]"
+        } mt-[64px] p-4`}
+      >
+        <Outlet context={{ collapsed }} />
+      </div>
     </div>
   );
 }
-
-export default App;
