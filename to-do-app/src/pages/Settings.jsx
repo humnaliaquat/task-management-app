@@ -8,6 +8,10 @@ export default function Settings() {
       className={`absolute top-18 right-0 px-2 h-[calc(100vh-80px)] overflow-y-auto scroll-smooth py-5    text-gray-900  
       ${collapsed ? "w-[calc(100%-72px)]" : "w-[calc(100%-256px)]"} 
        overflow-y-auto`}
+      style={{
+        backgroundColor: "var(--card)",
+        color: "var(--text)",
+      }}
     >
       <div className="grid grid-cols-1 md:grid-cols-10 gap-6 m-2 items-start border-b border-gray-200 pb-15">
         {/* Header Section */}
@@ -20,9 +24,9 @@ export default function Settings() {
         {/* Profile Information Form */}
         <div className="flex flex-col gap-6 md:col-span-7">
           <div className="flex items-center gap-7">
-            <div className="bg-amber-600 w-24 h-24 rounded-2xl"></div>
-            <div className="flex flex-col gap-2 items-center">
-              <button className="w-40 bg-blue-500 mt-2 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <div className="bg-indigo-400 w-24 h-24 rounded-2xl"></div>
+            <div className="flex flex-col gap-2 items-start">
+              <button className="w-37 mt-2 px-4 change-avatar-button text-gray-800 bg-gray-100 hover:bg-gray-200 py-2 rounded-md transition-colors">
                 Change Avatar
               </button>
               <p>JPG, GIF or PNG. 1MB max.</p>
@@ -74,7 +78,7 @@ export default function Settings() {
               />
             </div>
 
-            <button className="w-20 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <button className="w-20 text-gray-800 bg-gray-200 hover:bg-gray-300  rounded-md transition-colors py-2 px-4  save-btn">
               Save
             </button>
           </div>
@@ -82,7 +86,7 @@ export default function Settings() {
       </div>
       {/* Password Change Section */}
 
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-6 m-2 items-start border-b border-gray-200 pb-15 pt-10">
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-6 m-2 items-start pb-7 pt-10">
         {/* Section Title */}
         <div className="md:col-span-3 space-y-2 text-left">
           <h2 className="text-xl font-medium">Change Password</h2>
@@ -142,7 +146,7 @@ export default function Settings() {
             />
           </div>
 
-          <button className="w-20 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+          <button className="w-20 px-4 text-gray-800 bg-gray-100 hover:bg-gray-200 py-2 rounded-md transition-colors ">
             Save
           </button>
         </div>

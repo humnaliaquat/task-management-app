@@ -25,13 +25,17 @@ export default function Buttons({ collapsed }) {
           ? "left-18 w-[calc(100%-72px)]"
           : "left-64 w-[calc(100%-256px)]"
       }`}
+      style={{
+        backgroundColor: "var(--card)",
+        color: "var(--text)",
+      }}
     >
       {/* Header Row */}
       <div className="header flex justify-between items-center px-3 py-1 border border-gray-300 rounded-lg  ">
         {/* Left: Date */}
         <div className="flex flex-col justify-start items-start ">
           {/* Short text for small screens */}
-          <button className="flex items-center  btn1 border border-gray-300 rounded-lg  text-black px-2 py-2">
+          <button className="flex items-center  btn1 border border-gray-300 rounded-lg   px-2 py-2">
             <span className="text-[12px] sm:text-sm md:text-sm">Today</span>
           </button>
         </div>

@@ -28,9 +28,13 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
 
   return (
     <aside
-      className={`fixed top-0 left-0 h-screen #f9fafb text-gray-700  border-r border-gray-200 flex flex-col justify-between py-6  z-10 ${
+      className={`fixed top-0 left-0 h-screen #f9fafb  border-r border-gray-200 flex flex-col justify-between py-6  z-10 ${
         collapsed ? "w-[72px]" : "w-[255px]"
       }`}
+      style={{
+        backgroundColor: "var(--card)",
+        color: "var(--text)",
+      }}
     >
       {/* TOP PART */}
       <div className="flex flex-col items-center gap-6 border-b border-gray-300 pb-5">
@@ -41,13 +45,11 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           } w-full px-2`}
         >
           {!collapsed && (
-            <span className=" text-[#1f2937]   icon  bottom text-2xl font-bold">
-              todo
-            </span>
+            <span className="    icon  bottom text-2xl font-bold">todo</span>
           )}
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className="text-[#1f2937]   bottom"
+            className="  bottom"
             aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             {collapsed ? <ChevronRight size={24} /> : <ChevronLeft size={24} />}
@@ -62,12 +64,8 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
               key={i}
               className="flex items-center gap-2 link text-[#1f2937]  w-full px-2 py-2 hover:bg-[#ececec]  transition rounded"
             >
-              <span className="flex justify-center w-8 text-gray-800">
-                {icon}
-              </span>
-              {!collapsed && (
-                <span className="text-base text-gray-800">{label}</span>
-              )}
+              <span className="flex justify-center w-8 ">{icon}</span>
+              {!collapsed && <span className="text-base ">{label}</span>}
             </Link>
           ))}
         </nav>
@@ -76,17 +74,9 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       {/* BOTTOM PART */}
       <div className="flex flex-col gap-4 w-full justify-start ">
         {bottomItems.map(({ icon, label, path }, i) => (
-          <Link
-            to={path}
-            key={i}
-            className="flex flex-row gap-2 bottom link hover:bg-[#ececec] text-gray-800"
-          >
-            <span className="flex justify-center text-gray-700 w-8">
-              {icon}
-            </span>
-            {!collapsed && (
-              <span className="text-base text-gray-800">{label}</span>
-            )}
+          <Link to={path} key={i} className="flex flex-row gap-2 bottom link ">
+            <span className="flex justify-center  w-8">{icon}</span>
+            {!collapsed && <span className="text-base ">{label}</span>}
           </Link>
         ))}
       </div>

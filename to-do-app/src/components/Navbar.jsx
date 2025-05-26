@@ -28,7 +28,7 @@ export default function Navbar({ collapsed }) {
         color: "var(--text)",
       }}
     >
-      <h1 className="welcome text-[1.1rem] sm:text-[1.5rem] font-semibold p-2">
+      <h1 className="welcome text-[1.2rem] sm:text-[1.5rem] font-medium p-2">
         {getGreeting()} Hani!
       </h1>
       <div className="flex items-center gap-3">

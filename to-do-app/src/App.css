@@ -38,8 +38,7 @@
 }
 .welcome{
   
-  color: #383434;
-  font-weight: 700;
+  
   
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -95,4 +94,21 @@ li:hover{
   height: 34px;
  
   place-items: center;
+}
+.change-avatar-button{
+  border-radius: 10px;
+  height: 35px;
+  border: 1px solid rgb(202, 200, 200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.save-btn{
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgb(202, 200, 200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
