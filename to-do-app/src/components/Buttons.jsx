@@ -27,11 +27,13 @@ export default function Buttons({ collapsed }) {
       }`}
       style={{
         backgroundColor: "var(--card)",
-        color: "var(--text)",
       }}
     >
       {/* Header Row */}
-      <div className="header flex justify-between items-center px-3 py-1 border border-gray-300 rounded-lg  ">
+      <div
+        className="header flex justify-between items-center px-3 py-1 border border-gray-300 rounded-lg  "
+        style={{ backgroundColor: "var(--card)", color: "var(--text)" }}
+      >
         {/* Left: Date */}
         <div className="flex flex-col justify-start items-start ">
           {/* Short text for small screens */}
