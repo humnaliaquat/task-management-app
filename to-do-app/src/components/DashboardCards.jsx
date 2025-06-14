@@ -1,4 +1,6 @@
 import React from "react";
+import TaskStatsChart from "./TaskStatsChart";
+import CalendarCard from "./CalendarCard";
 
 export default function DashboardCards({ collapsed }) {
   return (
@@ -13,36 +15,60 @@ export default function DashboardCards({ collapsed }) {
       {/* Outer wrapper: Responsive grid */}
       <div className="m-2 grid grid-cols-1 gap-6 md:grid-cols-4 items-stretch">
         {/* Left Card (All Tasks) */}
-        <div className="bg-white p-4 rounded shadow flex flex-col justify-between h-full">
-          <h2 className="text-xl font-semibold mb-2">All Tasks</h2>
-          <p>Task Overview</p>
+        <div
+          className="bg-gradient-to-r from-indigo-100 to-indigo-200 dark:from-blue-800 dark:to-blue-700 p-4 rounded-2xl shadow flex flex-col justify-between h-full text-gray-800 dark:text-gray-100"
+          style={{
+            color: "var(--text)",
+          }}
+        >
+          <h2 className="text-3xl font-semibold mb-2">0</h2>
+          <p>All Tasks</p>
         </div>
 
         {/* Right 3 Cards container */}
         <div className="col-span-1 md:col-span-3">
-          {/* Use flex on small, grid on medium+ */}
           <div className="flex flex-wrap justify-between gap-4 md:grid md:grid-cols-3">
-            {["Completed", "Ongoing", "Overdue"].map((item) => (
+            {[
+              {
+                item: "0",
+                task: "To Do",
+                bg: "from-blue-100 to-blue-200 dark:from-blue-800 dark:to-blue-700",
+              },
+              {
+                item: "0",
+                task: "Ongoing",
+                bg: "from-amber-100 to-amber-200 dark:from-amber-700 dark:to-amber-800",
+              },
+              {
+                item: "0",
+                task: "Completed",
+                bg: "from-green-100 to-green-200 dark:from-green-800 dark:to-green-700",
+              },
+            ].map(({ item, task, bg }, index) => (
               <div
-                key={item}
-                className="bg-white p-4 rounded shadow flex flex-col justify-between h-full w-[30%] sm:w-[30%] md:w-full"
+                key={index}
+                className={`p-4 rounded-2xl shadow flex flex-col justify-between h-full w-[30%] sm:w-[30%] md:w-full bg-gradient-to-r ${bg} text-gray-800 dark:text-gray-100`}
               >
-                <h3 className="text-lg font-semibold mb-2">{item}</h3>
-                <p>Task info here</p>
+                <h3 className="text-3xl font-semibold mb-2">{item}</h3>
+                <p>{task}</p>
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-4 m-2">
-        <div className="progress-tracker col-span-7 bg-white p-4 rounded shadow">
-          Progress
+
+      {/* Progress + Calendar */}
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-4 mt-0 m-2">
+        <div className="col-span-6  dark:bg-zinc-900 p-4 rounded shadow text-gray-800 dark:text-gray-100 h-72">
+          <TaskStatsChart />
         </div>
-        <div className="calandar col-span-3 bg-white p-4 rounded shadow">
-          Calandar
+        <div className="calandar col-span-4 h-72 flex justify-center items-center">
+          <CalendarCard />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-4 m-2 bg-white p-4 rounded shadow">
+
+      {/* Today's Tasks */}
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-4 m-2 bg-white dark:bg-zinc-900 p-4 rounded shadow text-gray-800 dark:text-gray-100">
         Today's Tasks
       </div>
     </div>
