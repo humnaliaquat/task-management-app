@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Bell, Sun, Moon, User } from "lucide-react";
+import { Bell, User } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar({ collapsed }) {
@@ -35,20 +35,7 @@ export default function Navbar({ collapsed }) {
         <button className="btn flex items-center">
           <Bell className="w-5 h-5" />
         </button>
-        <button
-          className="btn flex items-center"
-          style={{
-            backgroundColor: "var(--card)",
-            color: "var(--text)",
-          }}
-          onClick={toggleTheme}
-        >
-          {theme === "light" ? (
-            <Moon className="w-5 h-5" />
-          ) : (
-            <Sun className="w-5 h-5" />
-          )}
-        </button>
+
         <select
           onChange={(e) => toggleTheme(e.target.value)}
           value={theme}
@@ -60,8 +47,6 @@ export default function Navbar({ collapsed }) {
         >
           <option value="light">Light</option>
           <option value="dark">Dark</option>
-          <option value="blue">Blue</option>
-          <option value="retro">Retro</option>
         </select>
         <button className="btn flex items-center">
           <User className="w-5 h-5" />

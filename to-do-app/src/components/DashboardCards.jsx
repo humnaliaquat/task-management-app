@@ -12,9 +12,8 @@ export default function DashboardCards({ collapsed }) {
         color: "var(--text)",
       }}
     >
-      {/* Outer wrapper: Responsive grid */}
-      <div className="m-2 grid grid-cols-1 gap-6 md:grid-cols-4 items-stretch">
-        {/* Left Card (All Tasks) */}
+      <div className="m-2 grid grid-cols-1 gap-2 md:grid-cols-4 items-stretch">
+        {/* Left 1 Cards container */}
         <div
           className="bg-gradient-to-r from-indigo-100 to-indigo-200 dark:from-blue-800 dark:to-blue-700 p-4 rounded-2xl shadow flex flex-col justify-between h-full text-gray-800 dark:text-gray-100"
           style={{
@@ -27,7 +26,7 @@ export default function DashboardCards({ collapsed }) {
 
         {/* Right 3 Cards container */}
         <div className="col-span-1 md:col-span-3">
-          <div className="flex flex-wrap justify-between gap-4 md:grid md:grid-cols-3">
+          <div className="flex flex-wrap justify-between gap-2 md:grid md:grid-cols-3">
             {[
               {
                 item: "0",
@@ -58,11 +57,12 @@ export default function DashboardCards({ collapsed }) {
       </div>
 
       {/* Progress + Calendar */}
-      <div className="grid grid-cols-1 md:grid-cols-10 gap-4 mt-0 m-2">
-        <div className="col-span-6  dark:bg-zinc-900 p-4 rounded shadow text-gray-800 dark:text-gray-100 h-72">
+      <div className="grid grid-cols-1 md:grid-cols-10 gap-2 m-2 mt-1  place-content-center">
+        <div className="col-span-6 top-25 dark:bg-zinc-900 mt-0 pt-0 rounded-3xl shadow text-gray-800 dark:text-gray-100 h-72 flex justify-center items-center place-content-center">
           <TaskStatsChart />
         </div>
-        <div className="calandar col-span-4 h-72 flex justify-center items-center">
+
+        <div className="calandar hidden md:flex col-span-4 h-72 justify-center items-center rounded-3xl">
           <CalendarCard />
         </div>
       </div>

@@ -19,11 +19,11 @@ const data = [
 
 export default function TaskStatsChart() {
   return (
-    <div className=" dark:bg-zinc-900 p-2 rounded w-full h-60">
+    <div className="dark:bg-zinc-900 w-full h-full flex flex-col justify-center items-center p-4 rounded-2xl">
       <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
         Tasks Overview
       </h2>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="80%">
         <BarChart data={data}>
           <XAxis
             dataKey="name"
