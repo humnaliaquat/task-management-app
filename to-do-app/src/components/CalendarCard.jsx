@@ -9,7 +9,7 @@ export default function CalendarCard() {
   const today = new Date();
 
   return (
-    <div className=" dark:bg-zinc-900 p-4 rounded-3xl shadow text-gray-800 dark:text-gray-100 h-72 overflow-hidden flex justify-center items-center ">
+    <div className="dark:bg-zinc-900 p-3 pt-1 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg dark:text-gray-100 h-72 w-full flex items-center justify-center overflow-hidden">
       <Calendar
         onChange={setDate}
         value={date}

@@ -19,8 +19,8 @@ const data = [
 
 export default function TaskStatsChart() {
   return (
-    <div className="dark:bg-zinc-900 w-full h-full flex flex-col justify-center items-center p-4 rounded-2xl">
-      <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+    <div className="dark:bg-zinc-900 w-full h-full flex flex-col justify-center items-center p-4 rounded-3xl  border border-gray-200 dark:border-gray-700 shadow-lg">
+      <h2 className="text-lg font-semibold  dark:text-gray-100 mb-4">
         Tasks Overview
       </h2>
       <ResponsiveContainer width="100%" height="80%">
@@ -50,8 +50,8 @@ export default function TaskStatsChart() {
           />
           <Bar
             dataKey="tasks"
-            fill="black"
-            radius={[6, 6, 0, 0]}
+            fill="#60a5fa"
+            radius={[6, 8, 0, 0]}
             barSize={35}
           />
         </BarChart>

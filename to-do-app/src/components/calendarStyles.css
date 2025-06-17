@@ -19,7 +19,7 @@
   background: none;
   border: none;
   font-weight: 600;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: inherit;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .today-highlight {
-  background-color: #84b0f8 !important;
+  background-color: #82b1fd !important;
   color: white !important;
 }
 
