@@ -4,7 +4,7 @@ import { Plus, MoreHorizontal } from "lucide-react";
 export default function Content({ collapsed }) {
   return (
     <div
-      className={`absolute top-32 right-0 px-2 py-5 text-gray-900 
+      className={`absolute top-32 right-0 px-4  py-5 text-gray-900 
       ${collapsed ? "w-[calc(100%-72px)]" : "w-[calc(100%-256px)]"} 
        overflow-y-auto`}
     >

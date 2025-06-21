@@ -20,7 +20,7 @@ export default function Buttons({ collapsed }) {
 
   return (
     <div
-      className={`main-content flex-1  fixed top-18 right-4  bg-[#f9fafb] border p-2 z-10 ${
+      className={`main-content flex-1  fixed top-18 right-4  bg-[#f9fafb] border p-2 z-10  ${
         collapsed
           ? "left-18 w-[calc(100%-72px)]"
           : "left-64 w-[calc(100%-256px)]"
@@ -31,7 +31,7 @@ export default function Buttons({ collapsed }) {
     >
       {/* Header Row */}
       <div
-        className="header flex justify-between items-center px-3 py-1 border border-gray-300 rounded-lg  "
+        className="header flex justify-between items-center px-4 py-1 border border-gray-300 rounded-lg m-2 mt-0 "
         style={{ backgroundColor: "var(--card)", color: "var(--text)" }}
       >
         {/* Left: Date */}

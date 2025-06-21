@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Bell, User } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
 
-export default function Navbar({ collapsed }) {
+export default function Navbar({ collapsed, greetings, search }) {
   const [time, setTime] = useState(new Date());
   const { theme, toggleTheme } = useContext(ThemeContext);
 
@@ -28,9 +28,25 @@ export default function Navbar({ collapsed }) {
         color: "var(--text)",
       }}
     >
-      <h1 className="welcome text-[1.2rem] sm:text-[1.5rem] font-medium p-2">
-        {getGreeting()} Hani!
-      </h1>
+      {" "}
+      {greetings && (
+        <h1 className="welcome text-[1.2rem] sm:text-[1.5rem] font-medium p-3">
+          {getGreeting()} Hani!
+        </h1>
+      )}
+      {search && (
+        <div className="flex items-center gap-2 px-4">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="bg-transparent border border-gray-300 dark:border-gray-600 rounded-full p-2 pl-4 text-sm w-[200px] sm:w-[300px] md:w-[400px]"
+            style={{
+              color: "var(--text)",
+              backgroundColor: "var(--card)",
+            }}
+          />
+        </div>
+      )}
       <div className="flex items-center gap-3">
         <button className="btn flex items-center">
           <Bell className="w-5 h-5" />

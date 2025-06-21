@@ -19,7 +19,7 @@ export default function AppLayout() {
   return (
     <div>
       <SideBar collapsed={collapsed} setCollapsed={setCollapsed} />
-      <Navbar collapsed={collapsed} />
+      <Navbar collapsed={collapsed} greetings={"Good Afternoon"} />
       <div
         className={`transition-all duration-300 ${
           collapsed ? "ml-[72px]" : "ml-[256px]"
