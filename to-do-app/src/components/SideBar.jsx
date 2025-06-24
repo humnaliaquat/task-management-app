@@ -16,7 +16,6 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   const navItems = [
     { icon: <LayoutDashboard size={20} />, label: "Dashboard", path: "/" },
     { icon: <List size={20} />, label: "Tasks", path: "/tasks" },
-    { icon: <Calendar size={20} />, label: "Calendar", path: "/calendar" },
     { icon: <Folder size={20} />, label: "Projects", path: "/projects" },
   ];
 
@@ -37,7 +36,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       }}
     >
       {/* TOP PART */}
-      <div className="flex flex-col items-center gap-6 border-b border-gray-300 pb-5">
+      <div className="flex flex-col items-center gap-6 border-gray-300 pb-5">
         {/* TOGGLE BUTTON */}
         <div
           className={`flex items-center justify-between   pb-2 ${

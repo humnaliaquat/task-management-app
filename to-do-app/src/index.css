@@ -11,17 +11,8 @@
   --card: #111827;
 }
 
-.theme-blue {
-  --bg: #e0f2fe;
-  --text: #0369a1;
-  --card: #bae6fd;
-}
 
-.theme-retro {
-  --bg: #fef3c7;
-  --text: #78350f;
-  --card: #fde68a;
-}
+
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -73,6 +64,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-
+.sx-react-calendar-wrapper {
+  width: 1200px;
+  max-width: 100vw;
+  height: 800px;
+  max-height: 90vh;
+}
 
 
