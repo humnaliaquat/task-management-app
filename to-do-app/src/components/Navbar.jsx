@@ -1,10 +1,38 @@
-import { useContext, useState } from "react";
-import { Bell, User } from "lucide-react";
+import { useContext, useState, useRef, useEffect } from "react";
+import {
+  Bell,
+  User,
+  UserCircle,
+  Settings,
+  Palette,
+  Trash,
+  LogOut,
+} from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function Navbar({ collapsed, greetings, search }) {
   const [time, setTime] = useState(new Date());
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isuserMenuOpen, setUserMenuOpen] = useState(false);
+  const [mainMenuOpen, setMainMenuOpen] = useState(false);
+  const userMenuRef = useRef(null);
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setUserMenuOpen(false);
+      }
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMainMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+    return () => clearInterval(interval);
+  }, []);
 
   const getGreeting = () => {
     const hour = time.getHours();
@@ -39,7 +67,7 @@ export default function Navbar({ collapsed, greetings, search }) {
           <input
             type="text"
             placeholder="Search..."
-            className="bg-transparent border border-gray-300 dark:border-gray-600 rounded-full p-2 pl-4 text-sm w-[200px] sm:w-[300px] md:w-[400px]"
+            className="bg-transparent border border-gray-300  search-option dark:border-gray-600 rounded-full p-2 pl-4 text-sm w-[200px] sm:w-[300px] md:w-[400px]"
             style={{
               color: "var(--text)",
               backgroundColor: "var(--card)",
@@ -48,25 +76,80 @@ export default function Navbar({ collapsed, greetings, search }) {
         </div>
       )}
       <div className="flex items-center gap-3">
-        <button className="btn flex items-center">
+        <button className="btn flex items-center relative">
           <Bell className="w-5 h-5" />
+          <span className="absolute  top-1 right-1 text-xs bg-gray-400 text-white rounded-full px-1.5">
+            3
+          </span>
         </button>
 
-        <select
-          onChange={(e) => toggleTheme(e.target.value)}
-          value={theme}
-          style={{
-            backgroundColor: "var(--card)",
-            color: "var(--text)",
-          }}
-          className="bg-transparent text-sm p-1 border rounded"
-        >
-          <option value="light">Light</option>
-          <option value="dark">Dark</option>
-        </select>
-        <button className="btn flex items-center">
-          <User className="w-5 h-5" />
-        </button>
+        <div className="relative" ref={userMenuRef}>
+          <button
+            className="btn flex items-center"
+            onClick={() => setUserMenuOpen(!isuserMenuOpen)}
+            aria-haspopup="true"
+            aria-expanded={isuserMenuOpen}
+          >
+            <User className="w-5 h-5" />
+          </button>
+
+          {isuserMenuOpen && (
+            <div className="absolute right-2 p-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-50 ">
+              <ul className="flex flex-col text-left w-full text-sm">
+                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer rounded-2xl mb-1 mt-1 flex items-center">
+                  <UserCircle className="inline-block mr-2 w-4 h-4" />
+                  Profile
+                </li>
+                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white rounded-2xl mb-1 mt-1 cursor-pointer">
+                  <Settings className="inline-block mr-2 w-4 h-4" />
+                  Settings
+                </li>
+                <div className="border-b border-gray-300 dark:border-gray-600 pb-1 mb-1">
+                  <li
+                    className="relative flex justify-start px-4 py-1.5 rounded-2xl mb-1 mt-1 w-full text-left text-black  bg-transparent  dark:text-white cursor-pointer "
+                    ref={menuRef}
+                    onClick={() => setMainMenuOpen(!mainMenuOpen)}
+                    aria-haspopup="true"
+                    aria-expanded={mainMenuOpen}
+                  >
+                    <Palette className="inline-block mr-2 w-4 h-4" />
+                    Themes
+                    {mainMenuOpen && (
+                      <div className="absolute top-0 right-45 p-2 mt-1 w-32 bg-white dark:bg-gray-800 rounded-lg z-50 shadow-lg">
+                        <ul className="text-sm text-black dark:text-white">
+                          <li
+                            className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 cursor-pointer relative rounded-2xl mb-1 mt-1"
+                            onMouseEnter={() => setSubmenuOpen("light")}
+                            onMouseLeave={() => setSubmenuOpen(null)}
+                            onClick={() => toggleTheme("light")}
+                          >
+                            Light
+                          </li>
+                          <li
+                            className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 cursor-pointer relative rounded-2xl mb-1 mt-1"
+                            onMouseEnter={() => setSubmenuOpen("dark")}
+                            onMouseLeave={() => setSubmenuOpen(null)}
+                            onClick={() => toggleTheme("dark")}
+                          >
+                            Dark
+                          </li>
+                        </ul>
+                      </div>
+                    )}
+                  </li>
+                </div>
+                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer rounded-2xl mb-1 mt-1">
+                  <Trash className="inline-block mr-2 w-4 h-4" />
+                  Trash
+                </li>
+                <li className="px-4 py-1.5 rounded-2xl mb-1 mt-1 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer ">
+                  <LogOut className="inline-block mr-2 w-4 h-4" />
+                  Logout
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </nav>
   );

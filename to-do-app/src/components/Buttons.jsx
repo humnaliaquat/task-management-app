@@ -1,10 +1,13 @@
 import { SlidersHorizontal, Plus, X } from "lucide-react";
 import React, { useState, useRef, useEffect } from "react";
 
-export default function Buttons({ collapsed }) {
+export default function Buttons({
+  collapsed,
+  isAddTaskOpen,
+  setIsAddTaskOpen,
+}) {
   const [isOpen, setIsOpen] = useState(false); // view
   const [isFilterOpen, setIsFilterOpen] = useState(false); // filter
-  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false); // add task
 
   const viewrRef = useRef(null);
   const filterRef = useRef(null);
@@ -69,15 +72,15 @@ export default function Buttons({ collapsed }) {
           </button>
 
           {isOpen && (
-            <div className="absolute mt-2 left-0 z-50 bg-white rounded-xl shadow-lg">
+            <div className="absolute mt-2 left-0 z-50 p-2 bg-white rounded-xl shadow-lg">
               <ul className="text-black flex flex-col text-left items-start w-48">
-                <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                <li className="w-full px-4 py-1.5 mt-1 mb-1  hover:bg-blue-100 rounded-2xl cursor-pointer">
                   Board view
                 </li>
-                <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                <li className="w-full px-4 py-1.5 mt-1 mb-1  hover:bg-blue-100 rounded-2xl cursor-pointer">
                   Table view
                 </li>
-                <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                <li className="w-full px-4 py-1.5 mt-1 mb-1  hover:bg-blue-100 rounded-2xl cursor-pointer">
                   List view
                 </li>
               </ul>
@@ -96,22 +99,22 @@ export default function Buttons({ collapsed }) {
                 setIsFilterOpen(!isFilterOpen);
                 setIsOpen(false); // close view if open
               }}
-              className="flex items-center gap-2 btn1 text-black px-2 py-0.5 transition-all w-auto sm:w-auto md:w-auto"
+              className="flex items-center gap-1 btn1 text-black px-2 py-0.5 transition-all w-auto sm:w-auto md:w-auto"
             >
-              <SlidersHorizontal className="w-4 h-4 text-black" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-black" />
               <span className="text-[12px] sm:text-sm md:text-sm">Filter</span>
             </button>
 
             {isFilterOpen && (
-              <div className="absolute mt-2 left-0 z-50 bg-white rounded-xl shadow-lg">
+              <div className="absolute mt-2 left-0 z-50 bg-white rounded-xl shadow-lg p-2">
                 <ul className="text-black flex flex-col text-left items-start w-48">
-                  <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                  <li className="w-full px-4 py-1.5 mt-1 mb-1 hover:bg-blue-100 rounded-2xl cursor-pointer">
                     Filter by status
                   </li>
-                  <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                  <li className="w-full px-4 py-1.5 mt-1 mb-1  hover:bg-blue-100 rounded-2xl cursor-pointer">
                     Filter by priority
                   </li>
-                  <li className="w-full px-4 py-2 hover:bg-blue-100 rounded-2xl cursor-pointer">
+                  <li className="w-full px-4 py-1.5 mt-1 mb-1  hover:bg-blue-100 rounded-2xl cursor-pointer">
                     Filter by due date
                   </li>
                 </ul>
@@ -122,43 +125,14 @@ export default function Buttons({ collapsed }) {
           {/* Add Task */}
           <div className="relative" onClick={(e) => e.stopPropagation()}>
             <button
-              className="flex items-center gap-2 btn1 px-3 py-1 whitespace-nowrap text-black w-auto sm:w-auto md:w-auto"
-              onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
+              className="flex items-center gap-1 btn1 px-3 py-1 whitespace-nowrap text-black w-auto sm:w-auto md:w-auto"
+              onClick={() => setIsAddTaskOpen(true)}
             >
               <Plus className="w-4 h-4 text-black" />
               <span className="text-[12px] sm:text-sm md:text-sm w-auto sm:w-auto">
                 Add Task
               </span>
             </button>
-            {isAddTaskOpen && (
-              <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg w-[500px] max-w-[90%] h-auto p-4 inset-0  backdrop-blur-xl z-[100]">
-                <X
-                  className="w-4 h-4 text-black absolute top-1 right-1 cursor-pointer"
-                  onClick={() => setIsAddTaskOpen(false)}
-                />
-                <input
-                  type="text"
-                  placeholder="Enter task title"
-                  className=" p-1 rounded w-full mb-2"
-                />
-                <textarea
-                  placeholder="Enter task description"
-                  className="p-1 rounded w-full mb-2"
-                  rows="4"
-                ></textarea>
-                <div className="flex justify-end">
-                  <button
-                    className=" px-4 py-2 text-black rounded items-center"
-                    onClick={() => {
-                      // Handle task addition logic here
-                      setIsAddTaskOpen(false);
-                    }}
-                  >
-                    Add Task
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

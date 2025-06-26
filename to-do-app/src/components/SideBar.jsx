@@ -36,11 +36,11 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       }}
     >
       {/* TOP PART */}
-      <div className="flex flex-col items-center gap-6 border-gray-300 pb-5">
+      <div className="flex flex-col items-center gap-6 border-gray-300 pb-5 m-2">
         {/* TOGGLE BUTTON */}
         <div
-          className={`flex items-center justify-between   pb-2 ${
-            !collapsed ? "pl-6 pr-2" : "pl-1"
+          className={`flex items-center justify-between   pb-2  ${
+            !collapsed ? "pl-6 pr-2" : "pr-18"
           } w-full px-2`}
         >
           {!collapsed && (
@@ -56,12 +56,12 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
         </div>
 
         {/* NAV ITEMS */}
-        <nav className="flex flex-col gap-4 mt-2 w-full">
+        <nav className="flex flex-col gap-4 m-2 mt-2 w-full">
           {navItems.map(({ icon, label, path }, i) => (
             <Link
               to={path}
               key={i}
-              className="flex items-center gap-2 link text-[#1f2937]  w-full px-2 py-2 hover:bg-[#ececec]  transition rounded"
+              className="flex items-center gap-2 link text-[#1f2937]  w-full px-2 py-1.5 hover:bg-[#ececec]  transition rounded"
             >
               <span className="flex justify-center w-8 ">{icon}</span>
               {!collapsed && <span className="text-base ">{label}</span>}
@@ -71,9 +71,13 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
       </div>
 
       {/* BOTTOM PART */}
-      <div className="flex flex-col gap-4 w-full justify-start ">
+      <div className="flex flex-col gap-4 w-full justify-start  ">
         {bottomItems.map(({ icon, label, path }, i) => (
-          <Link to={path} key={i} className="flex flex-row gap-2 bottom link ">
+          <Link
+            to={path}
+            key={i}
+            className="flex flex-row gap-2 bottom link px-2 m-2 mb-0 mt-0 py-1.5 hover:bg-[#ececec] transition rounded"
+          >
             <span className="flex justify-center  w-8">{icon}</span>
             {!collapsed && <span className="text-base ">{label}</span>}
           </Link>

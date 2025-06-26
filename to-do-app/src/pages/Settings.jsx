@@ -26,10 +26,8 @@ export default function Settings() {
           <div className="flex items-center gap-7">
             <div className="bg-indigo-400 w-24 h-24 rounded-2xl"></div>
             <div className="flex flex-col gap-2 items-start">
-              <button className="w-37 mt-2 px-4 change-avatar-button text-gray-800 bg-gray-100 hover:bg-gray-200 py-2 rounded-md transition-colors">
-                Change Avatar
-              </button>
-              <p>JPG, GIF or PNG. 1MB max.</p>
+              <button className=" change-avatar-btn">Change Avatar</button>
+              <p className="pic-info">JPG, GIF or PNG. 1MB max.</p>
             </div>
           </div>
           {/* Name and Email Section */}
@@ -41,19 +39,19 @@ export default function Settings() {
               <input
                 type="text"
                 id="name"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-gray-300 rounded-md p-2 focus:outline-none  name-input"
                 placeholder="Enter your name"
               />
             </div>
             {/* Email Section */}
             <div className="flex flex-col gap-2">
-              <label htmlFor="email" className="text-sm font-medium text-left">
+              <label htmlFor="email" className="text-sm font-medium  text-left">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-gray-300 rounded-md p-2 name-input"
                 placeholder="Enter your email"
               />
             </div>
@@ -68,17 +66,17 @@ export default function Settings() {
                 htmlFor="username"
                 className="text-sm font-medium text-left"
               >
-                username
+                Username
               </label>
               <input
                 type="text"
                 id="username"
-                className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-gray-300 rounded-md p-2 name-input"
                 placeholder="Enter your username"
               />
             </div>
 
-            <button className="w-20 text-gray-800 bg-gray-200 hover:bg-gray-300  rounded-md transition-colors py-2 px-4  save-btn">
+            <button className="w-15 text-gray-800 bg-gray-200 hover:bg-gray-300  rounded-md transition-colors py-2   save-btn">
               Save
             </button>
           </div>
@@ -110,7 +108,7 @@ export default function Settings() {
             <input
               type="password"
               id="current-password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 rounded-md p-2 name-input"
               placeholder="Enter your current password"
             />
           </div>
@@ -125,7 +123,7 @@ export default function Settings() {
             <input
               type="password"
               id="new-password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 rounded-md p-2 name-input"
               placeholder="Enter your new password"
             />
           </div>
@@ -141,12 +139,12 @@ export default function Settings() {
             <input
               type="password"
               id="confirm-new-password"
-              className="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 rounded-md p-2 name-input"
               placeholder="Confirm your new password"
             />
           </div>
 
-          <button className="w-20 px-4 text-gray-800 bg-gray-100 hover:bg-gray-200 py-2 rounded-md transition-colors ">
+          <button className="w-15 px-2  text-gray-800 save-btn  py-1.5 rounded-md transition-colors ">
             Save
           </button>
         </div>
