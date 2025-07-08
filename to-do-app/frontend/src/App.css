@@ -258,3 +258,8 @@ li:hover{
   margin-right: 0.5rem;
   border: none;
 }
+.options-btn{
+  height: 35px;
+  display: flex;
+  align-items: center;
+}

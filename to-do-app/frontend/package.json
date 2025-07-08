@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^3.19.1",
     "@emotion/react": "^11.14.0",
     "@tailwindcss/vite": "^4.1.6",
+    "axios": "^1.10.0",
     "lucide-react": "^0.510.0",
     "react": "^19.1.0",
     "react-calendar": "^6.0.0",
