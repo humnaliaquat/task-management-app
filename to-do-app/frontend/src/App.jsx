@@ -15,7 +15,6 @@ function App() {
           <Route path="tasks" element={<Tasks />} />
           <Route path="settings" element={<Settings />} />
           <Route path="projects" element={<Projects />} />
-          {/* Add more routes as needed */}
         </Route>
       </Routes>
     </Router>

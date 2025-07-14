@@ -10,11 +10,13 @@ import {
 } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
 
-export default function Navbar({ collapsed, greetings, search }) {
+export default function Navbar({ greetings, search }) {
   const [time, setTime] = useState(new Date());
-  const { theme, toggleTheme } = useContext(ThemeContext);
-  const [isuserMenuOpen, setUserMenuOpen] = useState(false);
+  const { toggleTheme } = useContext(ThemeContext);
+  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const [mainMenuOpen, setMainMenuOpen] = useState(false);
+  const [submenuOpen, setSubmenuOpen] = useState(null);
+
   const userMenuRef = useRef(null);
   const menuRef = useRef(null);
 
@@ -27,11 +29,11 @@ export default function Navbar({ collapsed, greetings, search }) {
         setMainMenuOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-    return () => clearInterval(interval);
   }, []);
 
   const getGreeting = () => {
@@ -43,107 +45,107 @@ export default function Navbar({ collapsed, greetings, search }) {
 
   return (
     <nav
-      className={`fixed top-0 h-[75px] flex items-center justify-between z-20 px-1 
-      
-      border-b border-gray-200 dark:border-gray-700
-      ${
-        collapsed
-          ? "left-18 w-[calc(100%-72px)]"
-          : "left-64 w-[calc(100%-256px)]"
-      }`}
+      className="fixed top-0 left-0 w-full h-[62px] flex items-center justify-between px-4 z-20"
       style={{
         backgroundColor: "var(--card)",
         color: "var(--text)",
+        borderBottom: "1px solid var(--border)",
       }}
     >
-      {" "}
-      {greetings && (
-        <h1 className="welcome text-[1.2rem] sm:text-[1.5rem] font-medium p-3">
-          {getGreeting()} Hani!
-        </h1>
-      )}
-      {search && (
-        <div className="flex items-center gap-2 px-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-transparent border border-gray-300  search-option dark:border-gray-600 rounded-full p-2 pl-4 text-sm w-[200px] sm:w-[300px] md:w-[400px]"
-            style={{
-              color: "var(--text)",
-              backgroundColor: "var(--card)",
-            }}
-          />
-        </div>
-      )}
-      <div className="flex items-center gap-3">
-        <button className="btn flex items-center relative">
+      <div className="ml-0">
+        {/* Greeting */}
+        {greetings && (
+          <h1 className="text-xl sm:text-lg md:text-xl lg:text-2xl font-medium">
+            {getGreeting()} Hani!
+          </h1>
+        )}
+
+        {/* Search Bar */}
+        {search && (
+          <div className="flex-1 flex justify-center">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-transparent border border-gray-300 dark:border-gray-600 rounded-full px-4 py-2 text-sm w-[200px] sm:w-[300px] md:w-[400px]"
+              style={{
+                color: "var(--text)",
+                backgroundColor: "var(--card)",
+              }}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Icons + Menu */}
+      <div className="flex items-center gap-5">
+        {/* Notifications */}
+        <button className="relative">
           <Bell className="w-5 h-5" />
-          <span className="absolute  top-1 right-1 text-xs bg-gray-400 text-white rounded-full px-1.5">
+          <span className="absolute -top-2 -right-3 bg-gray-400 text-white text-xs rounded-full px-1.5">
             3
           </span>
         </button>
 
+        {/* User Menu */}
         <div className="relative" ref={userMenuRef}>
           <button
-            className="btn flex items-center"
-            onClick={() => setUserMenuOpen(!isuserMenuOpen)}
+            onClick={() => setUserMenuOpen(!isUserMenuOpen)}
+            className="flex items-center cursor-pointer"
             aria-haspopup="true"
-            aria-expanded={isuserMenuOpen}
+            aria-expanded={isUserMenuOpen}
           >
             <User className="w-5 h-5" />
           </button>
 
-          {isuserMenuOpen && (
-            <div className="absolute right-2 p-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-50 ">
-              <ul className="flex flex-col text-left w-full text-sm">
-                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer rounded-2xl mb-1 mt-1 flex items-center">
-                  <UserCircle className="inline-block mr-2 w-4 h-4" />
+          {/* Dropdown */}
+          {isUserMenuOpen && (
+            <div className="absolute -right-2 mt-2 w-50 bg-white dark:bg-gray-800 rounded-2xl shadow-xl z-50">
+              <ul className="flex flex-col p-2 m-1 ml-0 mr-0 text-sm text-black dark:text-white ">
+                <li className="flex  items-center gap-2  px-4 py-1.5 hover:bg-blue-50  rounded-2xl cursor-pointer">
+                  <UserCircle className="w-4 h-4" />
                   Profile
                 </li>
-                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white rounded-2xl mb-1 mt-1 cursor-pointer">
-                  <Settings className="inline-block mr-2 w-4 h-4" />
+                <li className="flex items-center gap-2 px-4 mt-2 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 rounded-2xl cursor-pointer">
+                  <Settings className="w-4 h-4" />
                   Settings
                 </li>
-                <div className="border-b border-gray-300 dark:border-gray-600 pb-1 mb-1">
-                  <li
-                    className="relative flex justify-start px-4 py-1.5 rounded-2xl mb-1 mt-1 w-full text-left text-black  bg-transparent  dark:text-white cursor-pointer "
-                    ref={menuRef}
-                    onClick={() => setMainMenuOpen(!mainMenuOpen)}
-                    aria-haspopup="true"
-                    aria-expanded={mainMenuOpen}
-                  >
-                    <Palette className="inline-block mr-2 w-4 h-4" />
-                    Themes
-                    {mainMenuOpen && (
-                      <div className="absolute top-0 right-45 p-2 mt-1 w-32 bg-white dark:bg-gray-800 rounded-lg z-50 shadow-lg">
-                        <ul className="text-sm text-black dark:text-white">
-                          <li
-                            className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 cursor-pointer relative rounded-2xl mb-1 mt-1"
-                            onMouseEnter={() => setSubmenuOpen("light")}
-                            onMouseLeave={() => setSubmenuOpen(null)}
-                            onClick={() => toggleTheme("light")}
-                          >
-                            Light
-                          </li>
-                          <li
-                            className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 cursor-pointer relative rounded-2xl mb-1 mt-1"
-                            onMouseEnter={() => setSubmenuOpen("dark")}
-                            onMouseLeave={() => setSubmenuOpen(null)}
-                            onClick={() => toggleTheme("dark")}
-                          >
-                            Dark
-                          </li>
-                        </ul>
-                      </div>
-                    )}
-                  </li>
-                </div>
-                <li className="px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer rounded-2xl mb-1 mt-1">
-                  <Trash className="inline-block mr-2 w-4 h-4" />
+
+                {/* Theme Menu */}
+                <li
+                  className="relative flex items-center gap-2 mt-2 px-4 py-1.5 rounded-2xl cursor-pointer hover:bg-blue-100 dark:hover:bg-blue-700"
+                  ref={menuRef}
+                  onClick={() => setMainMenuOpen(!mainMenuOpen)}
+                  aria-haspopup="true"
+                  aria-expanded={mainMenuOpen}
+                >
+                  <Palette className="w-4 h-4" />
+                  Themes
+                  {mainMenuOpen && (
+                    <div className="absolute  top-0 -left-40 mt-2 w-38 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-2 z-50">
+                      <ul className="text-sm">
+                        <li
+                          className="px-4 py-1.5 rounded-2xl hover:bg-blue-100 dark:hover:bg-blue-700 text-left cursor-pointer"
+                          onClick={() => toggleTheme("light")}
+                        >
+                          Light
+                        </li>
+                        <li
+                          className="px-4 py-1.5 rounded-2xl hover:bg-blue-100 text-left dark:hover:bg-blue-700 cursor-pointer"
+                          onClick={() => toggleTheme("dark")}
+                        >
+                          Dark
+                        </li>
+                      </ul>
+                    </div>
+                  )}
+                </li>
+
+                <li className="flex items-center gap-2 mt-2 px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 rounded-2xl cursor-pointer">
+                  <Trash className="w-4 h-4" />
                   Trash
                 </li>
-                <li className="px-4 py-1.5 rounded-2xl mb-1 mt-1 hover:bg-blue-100 dark:hover:bg-blue-700 text-black dark:text-white cursor-pointer ">
-                  <LogOut className="inline-block mr-2 w-4 h-4" />
+                <li className="flex items-center gap-2 mt-2 px-4 py-1.5 hover:bg-blue-100 dark:hover:bg-blue-700 rounded-2xl cursor-pointer">
+                  <LogOut className="w-4 h-4" />
                   Logout
                 </li>
               </ul>

@@ -34,7 +34,7 @@ export default function Buttons({
 
   return (
     <div
-      className={`main-content flex-1 fixed top-18 right-4 border p-2 z-10 ${
+      className={`main-content flex-1 fixed top-18 right-4 bg-transparent p-2 z-10 ${
         collapsed
           ? "left-18 w-[calc(100%-72px)]"
           : "left-64 w-[calc(100%-256px)]"

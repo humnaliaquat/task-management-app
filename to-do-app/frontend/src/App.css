@@ -45,8 +45,8 @@
   
 }
 .icon{
-  
-  font: 900 1.6rem 'Baloo 2', cursive;
+  font-weight:bolder;
+  font:  1.6rem 'Baloo 2', cursive;
 
 }
 .dropdownmenu{

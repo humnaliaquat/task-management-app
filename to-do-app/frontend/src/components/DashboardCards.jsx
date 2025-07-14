@@ -5,14 +5,14 @@ import CalendarCard from "./CalendarCard";
 export default function DashboardCards({ collapsed }) {
   return (
     <div
-      className={`absolute top-15 right-0 px-2 overflow-y-auto scroll-smooth pt-5  
-    ${collapsed ? "w-[calc(100%-72px)]" : "w-[calc(100%-256px)]"} `}
+      className={`absolute top-16 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg  right-0 px-1 overflow-y-auto scroll-smooth pt-2 pb-1 m-2 mt-0 
+    ${collapsed ? "w-[calc(100%-95px)]" : "w-[calc(100%-270px)]"} `}
       style={{
         backgroundColor: "var(--card)",
         color: "var(--text)",
       }}
     >
-      <div className="m-2 grid grid-cols-1 gap-2 md:grid-cols-4 items-stretch">
+      <div className="m-2 mt-0 grid grid-cols-1 gap-2 md:grid-cols-4 items-stretch">
         {/* Left 1 Cards container */}
         <div className="bg-gradient-to-r from-indigo-100 to-indigo-200 dark:from-blue-800 dark:to-blue-700 p-4 rounded-2xl shadow flex flex-col justify-between h-full text-gray-800 dark:text-gray-100">
           <h2 className="text-3xl font-semibold mb-2">0</h2>
