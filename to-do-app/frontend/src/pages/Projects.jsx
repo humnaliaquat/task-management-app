@@ -8,7 +8,7 @@ export default function Projects() {
   return (
     <div>
       <Navbar collapsed={collapsed} search={true} />
-      <ProjectList />
+      <ProjectList collapsed={collapsed} />
     </div>
   );
 }
