@@ -6,8 +6,6 @@ export const ThemeContext = createContext();
 const themes = {
   light: "theme-light",
   dark: "theme-dark",
-  blue: "theme-blue",
-  retro: "theme-retro",
 };
 
 export const ThemeProvider = ({ children }) => {

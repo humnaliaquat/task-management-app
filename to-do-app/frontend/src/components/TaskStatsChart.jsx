@@ -50,7 +50,7 @@ export default function TaskStatsChart() {
           />
           <Bar
             dataKey="tasks"
-            fill="#60a5fa"
+            fill="#68aa9d"
             radius={[6, 8, 0, 0]}
             barSize={35}
           />

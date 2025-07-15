@@ -24,7 +24,7 @@ export default function Settings() {
         {/* Profile Information Form */}
         <div className="flex flex-col gap-6 md:col-span-7">
           <div className="flex items-center gap-7">
-            <div className="bg-indigo-400 w-24 h-24 rounded-2xl"></div>
+            <div className="bg-teal-300 w-24 h-24 rounded-2xl"></div>
             <div className="flex flex-col gap-2 items-start">
               <button className=" change-avatar-btn">Change Avatar</button>
               <p className="pic-info">JPG, GIF or PNG. 1MB max.</p>

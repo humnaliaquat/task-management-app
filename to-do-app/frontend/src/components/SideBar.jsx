@@ -26,15 +26,17 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   ];
 
   return (
-    <div className="m-2">
+    <div className="m-2 bg-blue-400">
       <aside
-        className={`fixed top-16 left-2  #f9fafb  border rounded-3xl border-gray-200 flex flex-col justify-between py-6  z-10 h-[562px] ${
+        className={`fixed top-16 left-2  #f9fafb  rounded-2xl  flex flex-col justify-between py-6 	bg-[#21534c] text-white z-10 h-[570px] ${
           collapsed ? "w-[72px]" : "w-[246px]"
         }`}
-        style={{
-          backgroundColor: "var(--card)",
-          color: "var(--text)",
-        }}
+        style={
+          {
+            // backgroundColor: "var(--card)",
+            // color: "var(--text)",
+          }
+        }
       >
         {/* TOP PART */}
         <div className="flex flex-col items-center gap-4 border-gray-300 pb-5 m-2 mt-0">

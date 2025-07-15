@@ -1,5 +1,6 @@
 import React from "react";
-import { Plus } from "lucide-react";
+import { Plus, MoreHorizontal } from "lucide-react";
+import CircularProgress from "./CircularProgress";
 
 export default function Projects({ collapsed }) {
   const items = [
@@ -27,12 +28,13 @@ export default function Projects({ collapsed }) {
   ];
   return (
     <div
-      className={`absolute m-2 mt-0 top-16 border border-gray-200 shadow rounded-3xl right-0 ${
+      className={`absolute m-2 mt-0 top-16   shadow rounded-xl  common-border-color right-0 ${
         collapsed ? " w-[calc(100%-95px)]" : " w-[calc(100%-270px)]"
       }`}
       style={{
         backgroundColor: "var(--card)",
         color: "var(--text)",
+        borderColor: "var(--border)",
       }}
     >
       <h1 className="p-3 text-left text-xl font-medium">Projects</h1>
@@ -40,27 +42,35 @@ export default function Projects({ collapsed }) {
         {items.map(({ projectName, count, status, task, progress }, index) => (
           <div
             key={index}
-            className="p-4 border border-gray-200 rounded-xl shadow"
+            style={{
+              backgroundColor: "var(--card-bg)",
+              color: "var(--text)",
+            }}
+            className="p-4 rounded-xl shadow"
           >
-            <div className="flex items-center justify-between gap-4">
+            <div
+              className="flex items-center justify-between gap-4"
+              style={{
+                backgroundColor: "var(--card-bg)",
+                color: "var(--text)",
+              }}
+            >
               <div className="flex items-center gap-2">
                 <span className="font-medium ">{projectName}</span>
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-400"></span>
                 <span className="text-xs text-gray-400">{status}</span>
               </div>
 
-              <Plus className="w-4 h-4 text-[#5a5959] cursor-pointer" />
+              <MoreHorizontal className="w-4 h-4 text-[#5a5959] cursor-pointer" />
             </div>
-            <ul className="list-disc text-left pl-5 text-sm text-gray-600 mt-2 ">
+            <h1 className="text-left pl-5">Tasks</h1>
+            <ul className=" text-left pl-5 text-sm text-gray-600 mt-2 ">
               {Object.entries(task).map(([key, value]) => (
                 <li key={key}>{value}</li>
               ))}
             </ul>
-            <div className="w-full h-2 bg-gray-200 rounded-full mt-3">
-              <div
-                className="h-full bg-blue-500 rounded-full"
-                style={{ width: "60%" }}
-              ></div>
+            <div className="flex justify-end">
+              <CircularProgress percentage={80} size={31} />
             </div>
           </div>
         ))}

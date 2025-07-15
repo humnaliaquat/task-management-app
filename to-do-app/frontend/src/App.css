@@ -61,9 +61,7 @@
 }
 
 
-li:hover{
-   background-color: #e7e7e7;
-}
+/* s */
 
 .add-task{
   
@@ -98,7 +96,7 @@ li:hover{
 .change-avatar-button{
   border-radius: 10px;
   height: 35px;
-  border: 1px solid rgb(202, 200, 200);
+  border: 1px solid rgb(94, 234, 212);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,7 +199,7 @@ li:hover{
  
 }
 .change-avatar-btn{
-  background-color: #ececec;
+  background-color: transparent;
   border-radius: 7px;
   padding: 0 0.5rem;
   cursor: pointer;
@@ -210,7 +208,7 @@ li:hover{
  font-size: 1rem;
   height: 33px;
   margin-right: 0.5rem;
-  border: none;
+  border: 1px solid rgb(219, 219, 219);
 }
 .change-avatar-btn:hover{
   background-color: #dcdcdc;
@@ -235,7 +233,7 @@ li:hover{
 
 }
 .save-btn {
-  background-color: #4788d8;
+  background-color: rgb(57, 173, 156);
   border-radius: 7px;
   padding: 0 0.7rem;
   cursor: pointer;
@@ -262,4 +260,7 @@ li:hover{
   height: 35px;
   display: flex;
   align-items: center;
+}
+.common-border-color{
+   border: 0.3px solid var(--border);
 }

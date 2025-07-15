@@ -49,7 +49,6 @@ export default function Navbar({ greetings, search }) {
       style={{
         backgroundColor: "var(--card)",
         color: "var(--text)",
-        borderBottom: "1px solid var(--border)",
       }}
     >
       <div className="ml-0">

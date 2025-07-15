@@ -3,12 +3,16 @@
   --bg: #ffffff;
   --text: #1f2937;
   --card: #f9fafb;
+  --card-bg:#eeeeee;
+  --border: rgba(209, 208, 208, 0.5);
 }
 
 .theme-dark {
   --bg: #494949;
   --text: #f9fafb;
   --card: #111827;
+  --card-bg:#181f2c;
+  --border: rgba(105, 104, 104, 0.3);
 }
 
 

@@ -5,7 +5,7 @@ import CalendarCard from "./CalendarCard";
 export default function DashboardCards({ collapsed }) {
   return (
     <div
-      className={`absolute top-16 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg  right-0 px-1 overflow-y-auto scroll-smooth pt-2 pb-1 m-2 mt-0 
+      className={`absolute top-16 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg  right-0 px-1 overflow-y-auto scroll-smooth pt-3 pb-1 m-2 mt-0 
     ${collapsed ? "w-[calc(100%-95px)]" : "w-[calc(100%-270px)]"} `}
       style={{
         backgroundColor: "var(--card)",
@@ -75,7 +75,7 @@ export default function DashboardCards({ collapsed }) {
       </div>
       {/* Today's Tasks */}
       <div
-        className="grid grid-cols-1 md:grid-cols-10 gap-2 mb-1 mt-1 m-2 p-3 pb-2 dark:bg-zinc-900 dark:text-gray-100 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg"
+        className="grid grid-cols-1 md:grid-cols-10 gap-2 mb-2 mt-2 m-2 p-3 pb-2 dark:bg-zinc-900 dark:text-gray-100 rounded-3xl border border-gray-200 dark:border-gray-700 shadow-lg"
         style={{
           color: "var(--text)",
         }}
