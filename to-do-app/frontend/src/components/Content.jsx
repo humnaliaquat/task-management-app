@@ -115,7 +115,7 @@ export default function Content({ collapsed, tasks, setTasks }) {
             </div>
             <div className="flex justify-end relative">
               <button
-                className=" px-4 py-2 text-black rounded items-center add-task-button 	absolute top-2 w-auto transition-colors "
+                className=" px-4 py-2  rounded items-center add-task-button 	absolute top-2 w-auto transition-colors "
                 onClick={() => {
                   addTask();
                   setIsAddTaskOpen(false);

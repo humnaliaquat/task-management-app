@@ -76,7 +76,7 @@ export default function Settings() {
               />
             </div>
 
-            <button className="w-15 text-gray-800 bg-gray-200 hover:bg-gray-300  rounded-md transition-colors py-2   save-btn">
+            <button className="w-15 text-gray-800 bg-gray-200 hover:bg-gray-300 common-hover rounded-md transition-colors py-2   save-btn">
               Save
             </button>
           </div>

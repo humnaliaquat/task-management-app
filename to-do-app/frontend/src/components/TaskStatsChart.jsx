@@ -19,7 +19,7 @@ const data = [
 
 export default function TaskStatsChart() {
   return (
-    <div className="dark:bg-zinc-900 w-full h-full flex flex-col justify-center items-center p-4 rounded-3xl  border border-gray-200 dark:border-gray-700 shadow-lg">
+    <div className="dark:bg-zinc-900 w-full h-full flex flex-col justify-center items-center p-4 rounded-3xl  common-border-color shadow">
       <h2 className="text-lg font-semibold  dark:text-gray-100 mb-4">
         Tasks Overview
       </h2>

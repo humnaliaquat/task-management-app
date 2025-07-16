@@ -12,10 +12,13 @@
   border: none;
  
 }
-.bottom:focus{
- 
-  background-color: #ececec;
+.common-hover:hover{
+   background-color: #357a71;
 }
+.save-btn:hover{
+   background-color: #429189;
+}
+
 .bottom:focus-visible{
   border: none;
   outline: none;
@@ -48,6 +51,9 @@
   font-weight:bolder;
   font:  1.6rem 'Baloo 2', cursive;
 
+}
+.todays-task-border{
+  border-bottom: 0.3px solid var(--border);
 }
 .dropdownmenu{
   position: absolute;
@@ -85,9 +91,7 @@
   cursor: pointer;
   transition: border-color 0.25s;
 }
-.link:hover{
-   background-color: #ececec;
-}
+
 .update{
   height: 34px;
  
@@ -250,11 +254,13 @@
   padding: 0 0.7rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  color: #fff;
  font-size: 1rem;
   height: 30px;
   margin-right: 0.5rem;
   border: none;
+}
+.add-task-button:hover{
+  background-color: #363434;
 }
 .options-btn{
   height: 35px;

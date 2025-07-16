@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   ChevronLeft,
   ChevronRight,
@@ -26,20 +26,14 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   ];
 
   return (
-    <div className="m-2 bg-blue-400">
+    <div className="m-2 ">
       <aside
-        className={`fixed top-16 left-2  #f9fafb  rounded-2xl  flex flex-col justify-between py-6 	bg-[#21534c] text-white z-10 h-[570px] ${
+        className={`fixed top-16 left-2  #f9fafb  rounded-2xl  flex flex-col justify-between py-6 	bg-[#21534c]  z-10 h-[569px] ${
           collapsed ? "w-[72px]" : "w-[246px]"
         }`}
-        style={
-          {
-            // backgroundColor: "var(--card)",
-            // color: "var(--text)",
-          }
-        }
       >
         {/* TOP PART */}
-        <div className="flex flex-col items-center gap-4 border-gray-300 pb-5 m-2 mt-0">
+        <div className="flex flex-col items-center gap-4  pb-5 m-2 mt-0">
           {/* TOGGLE BUTTON */}
           <div
             className={`flex items-center justify-between   pb-1  ${
@@ -53,7 +47,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
             )}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="  bottom options-btn common-btn"
+              className="  bottom common-hover options-btn common-btn"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (
@@ -67,33 +61,81 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           {/* NAV ITEMS */}
           <nav className="flex flex-col gap-6 m-2 mt-2 w-full justify-center items-center">
             {navItems.map(({ icon, label, path }, i) => (
-              <Link
+              <NavLink
                 to={path}
                 key={i}
-                className={`flex items-center  gap-2 link text-[#1f2937]  w-full px-2 py-1.5 hover:bg-[#ececec]  transition rounded options-btn ${
-                  collapsed ? "justify-center" : "justify-start"
-                }`}
+                className={({ isActive }) => {
+                  const baseClasses =
+                    "flex items-center gap-2 w-full px-5 py-1 transition options-btn rounded";
+                  const activeClasses = "bg-[#d5d8d8] font-semibold";
+                  const inactiveClasses = "common-hover";
+
+                  return `${baseClasses} ${
+                    collapsed ? "justify-center" : "justify-start"
+                  } ${isActive ? activeClasses : inactiveClasses}`;
+                }}
               >
-                <span className="flex justify-center w-8 ">{icon}</span>
-                {!collapsed && <span className="text-base ">{label}</span>}
-              </Link>
+                {({ isActive }) => (
+                  <>
+                    <span
+                      className={`flex justify-center w-8 ${
+                        isActive ? "text-[#429189]" : ""
+                      }`}
+                    >
+                      {icon}
+                    </span>
+                    {!collapsed && (
+                      <span
+                        className={`text-base ${isActive ? "text-black" : ""}`}
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </>
+                )}
+              </NavLink>
             ))}
           </nav>
         </div>
 
         {/* BOTTOM PART */}
-        <div className="flex flex-col gap-6 w-full justify-start  ">
+        {/* BOTTOM PART */}
+        <div className="flex flex-col gap-6 w-full justify-start">
           {bottomItems.map(({ icon, label, path }, i) => (
-            <Link
+            <NavLink
               to={path}
               key={i}
-              className={`flex flex-row gap-2 bottom link px-2 m-2 mb-0 mt-0 py-1 options-btn hover:bg-[#ececec] transition rounded ${
-                collapsed ? "justify-center" : "justify-start"
-              }`}
+              className={({ isActive }) =>
+                `flex items-center gap-2 px-5 py-1 transition rounded m-2 mt-0 mb-0 options-btn ${
+                  collapsed ? "justify-center" : "justify-start"
+                } ${
+                  isActive
+                    ? "bg-[#d5d8d8] text-[#21534c] font-semibold"
+                    : "common-hover text-white"
+                }`
+              }
             >
-              <span className="flex justify-center  w-8">{icon}</span>
-              {!collapsed && <span className="text-base ">{label}</span>}
-            </Link>
+              {({ isActive }) => (
+                <>
+                  <span
+                    className={`flex justify-center w-8 ${
+                      isActive ? "text-[#429189]" : ""
+                    }`}
+                  >
+                    {icon}
+                  </span>
+                  {!collapsed && (
+                    <span
+                      className={`text-base ${
+                        isActive ? "text-black" : "text-white"
+                      }`}
+                    >
+                      {label}
+                    </span>
+                  )}
+                </>
+              )}
+            </NavLink>
           ))}
         </div>
       </aside>
