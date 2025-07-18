@@ -23,7 +23,7 @@ export default function Projects({ collapsed }) {
       projectName: "Project 2",
       task: { task1: "follow rule 1", task2: "follow rule no2" },
       status: "to do",
-      progress: 60,
+      progress: 70,
     },
     {
       projectName: "Project 3",
@@ -76,7 +76,10 @@ export default function Projects({ collapsed }) {
                   <span className="h-2 w-2 rounded-full bg-amber-400"></span>
                   <span className="text-xs text-gray-500">{status}</span>
                 </div>
-                <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                <div className="flex justify-end gap-4   items-center">
+                  <CircularProgress percentage={progress} size={30} />
+                  <MoreHorizontal className="w-4 h-4 text-gray-500" />
+                </div>
               </div>
 
               {/* Tasks Accordion */}
@@ -92,9 +95,6 @@ export default function Projects({ collapsed }) {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex justify-end mt-4 mr-4 ">
-                    <CircularProgress percentage={progress} size={30} />
-                  </div>
                 </div>
               )}
             </div>

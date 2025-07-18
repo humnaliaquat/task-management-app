@@ -42,7 +42,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           >
             {!collapsed && (
               <span className="    icon  bottom text-2xl font-extrabold ">
-                todo
+                FlowDay
               </span>
             )}
             <button

@@ -35,18 +35,14 @@ export default function Buttons({ isAddTaskOpen, setIsAddTaskOpen }) {
     >
       {/* Header Row */}
       <div
-        className="header flex justify-between items-center px-4 py-1 border border-gray-300 rounded-lg mb-2"
+        className="header flex justify-between items-center px-4 py-1 common-border-color rounded-lg mb-2"
         style={{ backgroundColor: "var(--card)", color: "var(--text)" }}
       >
         {/* Left: Date */}
         <div className="flex flex-col justify-start items-center  relative">
-          <span className=" text-xs mt-1">
-            {new Date().toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "short",
-              day: "numeric",
-            })}
-          </span>
+          <button className="flex items-center  btn1 text-sm px-2 py-1 rounded sm:text-sm md:text-sm cursor-pointer">
+            <span className="text-[12px] sm:text-sm md:text-sm">Projects</span>
+          </button>
         </div>
 
         <p className=" text-2xl pb-2"> | </p>
@@ -58,14 +54,14 @@ export default function Buttons({ isAddTaskOpen, setIsAddTaskOpen }) {
               setIsOpen(!isOpen);
               setIsFilterOpen(false); // close filter if open
             }}
-            className="flex items-center  btn1 text-sm px-2 py-1 rounded sm:text-sm md:text-sm"
+            className="flex items-center  btn1 text-sm px-2 py-1 rounded sm:text-sm md:text-sm cursor-pointer"
           >
             <span className="text-[12px] sm:text-sm md:text-sm">View</span>
           </button>
 
           {isOpen && (
             <div
-              className="absolute mt-2 left-0 z-50 p-2 border  rounded-xl shadow-lg"
+              className="absolute mt-2 left-0 z-50 p-2 common-border-color  rounded-xl shadow-lg"
               style={{ backgroundColor: "var(--card)", color: "var(--text)" }}
             >
               <ul className="flex flex-col text-left items-start w-48">
@@ -100,7 +96,7 @@ export default function Buttons({ isAddTaskOpen, setIsAddTaskOpen }) {
                 setIsFilterOpen(!isFilterOpen);
                 setIsOpen(false); // close view if open
               }}
-              className="flex items-center gap-1 btn1  px-2 py-0.5 transition-all w-auto sm:w-auto md:w-auto"
+              className="flex items-center gap-1 btn1  px-2 py-0.5 transition-all w-auto sm:w-auto md:w-auto cursor-pointer "
             >
               <SlidersHorizontal className="w-3.5 h-3.5 " />
               <span className="text-[12px] sm:text-sm md:text-sm">Filter</span>
@@ -108,10 +104,10 @@ export default function Buttons({ isAddTaskOpen, setIsAddTaskOpen }) {
 
             {isFilterOpen && (
               <div
-                className="absolute mt-2 left-0 z-50  rounded-xl shadow-lg p-2"
+                className="absolute mt-2 right-0 z-50 common-border-color rounded-xl shadow-lg p-2"
                 style={{ backgroundColor: "var(--card)", color: "var(--text)" }}
               >
-                <ul className="text-black flex flex-col text-left items-start w-48">
+                <ul className=" flex flex-col text-left items-start w-48">
                   <li className="w-full px-4 py-1.5 mt-1 mb-1 hover:bg-blue-100 rounded-2xl cursor-pointer">
                     Filter by status
                   </li>
@@ -129,7 +125,7 @@ export default function Buttons({ isAddTaskOpen, setIsAddTaskOpen }) {
           {/* Add Task */}
           <div className="relative" onClick={(e) => e.stopPropagation()}>
             <button
-              className="flex items-center gap-1 btn1 px-3 py-1 whitespace-nowrap  w-auto sm:w-auto md:w-auto"
+              className="flex items-center gap-1 btn1 px-3 py-1 whitespace-nowrap  w-auto sm:w-auto md:w-auto cursor-pointer"
               onClick={() => setIsAddTaskOpen(true)}
             >
               <Plus className="w-4 h-4 " />
