@@ -58,7 +58,12 @@ a {
   transition: color 0.25s;
   text-decoration: inherit;
 }
-
+.google-login{
+  color: #111827;
+}
+.dont-have-acc-link{
+  color: #1f2937;
+}
 
 body {
   margin: 0;
