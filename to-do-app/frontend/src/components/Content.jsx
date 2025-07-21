@@ -100,18 +100,33 @@ export default function Content({ collapsed, tasks, setTasks }) {
 }
 
 function Column({ title, color, border, tasks, onAddClick }) {
+  const borderClasses = {
+    "indigo-600": "border-indigo-600",
+    "yellow-500": "border-yellow-500",
+    "emerald-500": "border-emerald-500",
+  };
+
+  const dotColorClasses = {
+    "indigo-500": "bg-indigo-500",
+    "yellow-500": "bg-yellow-500",
+    "emerald-500": "bg-emerald-500",
+  };
+
+  const borderClass = borderClasses[border] || "";
+  const dotClass = dotColorClasses[color] || "";
+
   return (
     <div
       style={{
         backgroundColor: "var(--card)",
         color: "var(--text)",
       }}
-      className={`min-w-[300px] flex-1 max-h-full rounded-lg shadow-md border-l-4 border-${border} flex flex-col`}
+      className={`min-w-[300px] flex-1 max-h-full rounded-lg shadow-md border-l-4 ${borderClass} flex flex-col`}
     >
       {/* Header */}
       <div className="sticky top-0 bg-inherit z-10 flex justify-between items-center gap-2 p-2 pb-0 pt-0">
         <div className="flex items-center gap-2 font-medium">
-          <span className={`h-2 w-2 rounded-full bg-${color}`}></span>
+          <span className={`h-2 w-2 rounded-full ${dotClass}`}></span>
           {title}
         </div>
         <div className="flex gap-2">
@@ -131,13 +146,13 @@ function Column({ title, color, border, tasks, onAddClick }) {
 
       {/* Scrollable Task Area */}
       <div
-        className="overflow-y-auto scroll-smooth  px-2 pb-2 custom-scrollbar"
+        className="overflow-y-auto scroll-smooth px-2 pb-2 custom-scrollbar"
         style={{ maxHeight: "calc(100vh - 224px)" }}
       >
         {tasks.length > 0 ? (
           tasks
         ) : (
-          <div className="text-sm text-center py-2 ">No tasks yet</div>
+          <div className="text-sm text-center py-2">No tasks yet</div>
         )}
       </div>
     </div>

@@ -7,6 +7,7 @@ import cors from "cors";
 import passport from "passport";
 
 import authRoutes from "./routes/auth.js";
+import taskRoutes from "./routes/task.routes.js";
 import "./config/passport.js";
 
 const app = express();
@@ -22,6 +23,7 @@ app.use(passport.initialize());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
   res.send("🎉 Server is running!");
