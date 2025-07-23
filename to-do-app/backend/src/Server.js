@@ -4,34 +4,32 @@ dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import passport from "passport";
 
-import authRoutes from "./routes/auth.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
 import taskRoutes from "./routes/task.routes.js";
-import "./config/passport.js";
 
 const app = express();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
 app.use(express.json());
-app.use(passport.initialize());
 
-// Routes
-app.use("/api/auth", authRoutes);
+// API Routes
 app.use("/api/tasks", taskRoutes);
-
-app.get("/", (req, res) => {
-  res.send("🎉 Server is running!");
-});
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, {})
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ Connected to MongoDB");
   })

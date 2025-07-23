@@ -8,8 +8,15 @@ export default function HomeRedirect() {
 
   useEffect(() => {
     if (isSignedIn) {
-      navigate("/dashboard");
+      console.log("isSignedIn:", isSignedIn);
+      console.log("Navigating to:", "/dashboard");
+      try {
+        navigate("/dashboard");
+      } catch (err) {
+        console.error("❌ Navigate failed", err);
+      }
     } else {
+      console.log("Navigating to:", "/sign-in");
       navigate("/sign-in");
     }
   }, [isSignedIn, navigate]);

@@ -15,14 +15,26 @@ import {
 const Sidebar = ({ collapsed, setCollapsed }) => {
   // Main nav items (top)
   const navItems = [
-    { icon: <LayoutDashboard size={20} />, label: "Dashboard", path: "/" },
-    { icon: <List size={20} />, label: "Tasks", path: "/tasks" },
-    { icon: <Folder size={20} />, label: "Projects", path: "/projects" },
+    {
+      icon: <LayoutDashboard size={20} />,
+      label: "Dashboard",
+      path: "/dashboard",
+    },
+    { icon: <List size={20} />, label: "Tasks", path: "/dashboard/tasks" },
+    {
+      icon: <Folder size={20} />,
+      label: "Projects",
+      path: "/dashboard/projects",
+    },
   ];
 
   // Bottom nav items
   const bottomItems = [
-    { icon: <Settings size={20} />, label: "Settings", path: "/settings" },
+    {
+      icon: <Settings size={20} />,
+      label: "Settings",
+      path: "/dashboard/settings",
+    },
     { icon: <LogOut size={20} />, label: "Logout", path: "/logout" },
   ];
 

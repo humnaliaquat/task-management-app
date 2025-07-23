@@ -5,7 +5,7 @@ import {
   RedirectToSignIn,
   ClerkLoaded,
 } from "@clerk/clerk-react";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 import "./App.css";
 import AppLayout from "./layouts/AppLayout";
 import Dashboard from "./pages/Dashboard";
@@ -19,36 +19,30 @@ import HomeRedirect from "./pages/HomeRedirect";
 function App() {
   return (
     <Router>
-      <ClerkLoaded>
-        <Routes>
-          {/* 🔁 First visit goes here */}
-          <Route path="/" element={<HomeRedirect />} />
+      <Routes>
+        {/* 🔁 First visit goes here */}
+        <Route path="/" element={<HomeRedirect />} />
 
-          {/* 🔑 Auth pages */}
-          <Route path="/sign-in" element={<SignInPage />} />
-          <Route path="/sign-up" element={<SignUpPage />} />
+        {/* 🔑 Auth pages */}
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
 
-          {/* 🔒 Protected app */}
-          <Route
-            path="/dashboard"
-            element={
-              <>
-                <SignedIn>
-                  <AppLayout />
-                </SignedIn>
-                <SignedOut>
-                  <RedirectToSignIn />
-                </SignedOut>
-              </>
-            }
-          >
-            <Route index element={<Dashboard />} />
-            <Route path="tasks" element={<Tasks />} />
-            <Route path="settings" element={<Settings />} />
-            <Route path="projects" element={<Projects />} />
-          </Route>
-        </Routes>
-      </ClerkLoaded>
+        {/* 🔒 Protected app */}
+
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Dashboard />} />
+          <Route path="tasks" element={<Tasks />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="projects" element={<Projects />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }
