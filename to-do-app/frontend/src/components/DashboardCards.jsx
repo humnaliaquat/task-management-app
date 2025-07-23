@@ -1,4 +1,5 @@
 import React from "react";
+import { useUser } from "@clerk/clerk-react";
 import TaskStatsChart from "./TaskStatsChart";
 import CalendarCard from "./CalendarCard";
 

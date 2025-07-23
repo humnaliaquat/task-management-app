@@ -9,8 +9,10 @@ import {
   LogOut,
 } from "lucide-react";
 import { ThemeContext } from "../context/ThemeContext";
+import { useUser } from "@clerk/clerk-react";
 
 export default function Navbar({ greetings, search }) {
+  const { user } = useUser();
   const [time, setTime] = useState(new Date());
   const { toggleTheme } = useContext(ThemeContext);
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
@@ -55,7 +57,7 @@ export default function Navbar({ greetings, search }) {
         {/* Greeting */}
         {greetings && (
           <h1 className="text-xl sm:text-lg md:text-xl lg:text-2xl font-medium">
-            {getGreeting()} Hani!
+            {getGreeting()} {user?.fullName}!
           </h1>
         )}
 
