@@ -39,28 +39,28 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
   ];
 
   return (
-    <div className="m-2 ">
+    <div className="m-2">
       <aside
-        className={`fixed top-16 left-2  #f9fafb  rounded-2xl  flex flex-col justify-between py-6 	bg-[#21534c]  z-10 h-[569px] ${
+        className={`fixed top-16 left-2 rounded-2xl flex flex-col justify-between py-6 bg-[#21534c] z-10 h-[569px] ${
           collapsed ? "w-[72px]" : "w-[246px]"
         }`}
       >
         {/* TOP PART */}
-        <div className="flex flex-col items-center gap-4  pb-5 m-2 mt-0">
+        <div className="flex flex-col items-center gap-4 pb-5 m-2 mt-0">
           {/* TOGGLE BUTTON */}
           <div
-            className={`flex items-center justify-between   pb-1  ${
+            className={`flex items-center justify-between pb-1 ${
               !collapsed ? "pl-6 pr-2" : "pr-17"
             } w-full px-2`}
           >
             {!collapsed && (
-              <span className="    icon  bottom text-2xl font-extrabold ">
+              <span className="icon bottom text-2xl font-extrabold">
                 FlowDay
               </span>
             )}
             <button
               onClick={() => setCollapsed(!collapsed)}
-              className="  bottom common-hover options-btn common-btn"
+              className="bottom common-hover options-btn common-btn"
               aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
             >
               {collapsed ? (
@@ -77,6 +77,7 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
               <NavLink
                 to={path}
                 key={i}
+                end={path === "/dashboard"} // ✅ only apply exact match for /dashboard
                 className={({ isActive }) => {
                   const baseClasses =
                     "flex items-center gap-2 w-full px-5 py-1 transition options-btn rounded";
@@ -111,7 +112,6 @@ const Sidebar = ({ collapsed, setCollapsed }) => {
           </nav>
         </div>
 
-        {/* BOTTOM PART */}
         {/* BOTTOM PART */}
         <div className="flex flex-col gap-6 w-full justify-start">
           {bottomItems.map(({ icon, label, path }, i) => (

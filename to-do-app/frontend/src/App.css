@@ -276,3 +276,6 @@
 .border-under-buttons{
   border-bottom: 0.3px solid var(--border);
 }
+.border-top{
+  border-top: 0.3px solid var(--border);
+}

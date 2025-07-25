@@ -9,6 +9,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 import taskRoutes from "./routes/task.routes.js";
+import projectRoutes from "./routes/projects.js";
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(express.json());
 
 // API Routes
 app.use("/api/tasks", taskRoutes);
+app.use("/api/projects", projectRoutes);
 
 // Connect to MongoDB
 mongoose
